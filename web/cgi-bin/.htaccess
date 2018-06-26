@@ -1,0 +1,2 @@
+Action application/x-httpd-eruby /cgi-bin/erb.rb
+AddHandler application/x-httpd-eruby .rhtml
