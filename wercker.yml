@@ -1,0 +1,29 @@
+box: dock0/ssh
+
+build:
+  steps:
+    - script:
+        name: echo
+        code: |
+          echo "build step"
+deploy:
+  steps:
+    - script:
+        name: echo
+        code: |
+          echo "deploy step"
+    - mktemp:
+        envvar: PRIVATE_KEY_PATH
+    - create-file:
+        name: write key
+        filename: $PRIVATE_KEY_PATH
+        content: $ICHO_DEPLOY_KEY_PRIVATE
+        overwrite: true
+        hide-from-log: true
+    - script:
+        name: deploy to icho
+        code: 
+          - |-
+          ssh -i $PRIVATE_KEY_PATH -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USER_NAME@$SERVER_NAME \
+          "cd ~/www/cgi-bin/UT_only/ML && rm -rf * && git fetch origin master && git checkout origin/master web/cgi-bin && mv cgi-bin/* . && rmdir cgi-bin &&\
+           cd ~/www/UT_only/ML && rm -rf * && git fetch origin master && git checkout origin/master web/html && mv html/* . && rmdir -r html &&"
