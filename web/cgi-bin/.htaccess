@@ -1,2 +1,9 @@
-Action application/x-httpd-eruby ./erb.rb
 AddHandler application/x-httpd-eruby .rhtml
+
+<If "%{HTTP_HOST} == 'localhost\:8080'">
+  Action application/x-httpd-eruby /cgi-bin/erb.rb
+</If>
+
+<If "%{HTTP_HOST} == 'cgi\.u\.tsukuba\.ac\.jp'">
+  Action application/x-httpd-eruby /~s1611442/UT_only/ML/erb.rb
+</If>
