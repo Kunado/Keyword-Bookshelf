@@ -21,6 +21,10 @@ deploy:
         overwrite: true
         hide-from-log: true
     - script:
-        name: deploy to icho
+        name: deploy cgi scripts
         code: |
           ssh -i $PRIVATE_KEY_PATH -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USER_NAME@$SERVER_NAME "cd ~/www/cgi-bin/UT_only/ML && rm -rf * && git fetch origin master && git checkout origin/master web/cgi-bin && mv web/cgi-bin/* . && rm -r web/"
+    - script:
+        name: deploy static files
+        code: |
+          ssh -i $PRIVATE_KEY_PATH -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USER_NAME@$SERVER_NAME "cd ~/www/UT_only/ML && rm -rf * && git fetch origin master && git checkout origin/master web/html && mv web/html/* . && rm -r web/"
