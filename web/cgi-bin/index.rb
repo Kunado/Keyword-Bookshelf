@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 require_relative 'env'
-p $root
+require 'cgi'
+print "Content-Type: text/html\n\n"
