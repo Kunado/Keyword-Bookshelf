@@ -23,4 +23,4 @@ deploy:
     - script:
         name: deploy to icho
         code: |
-          ssh -i $PRIVATE_KEY_PATH -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USER_NAME@$SERVER_NAME "echo 'hello in icho'"
+          ssh -i $PRIVATE_KEY_PATH -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USER_NAME@$SERVER_NAME "cd ~/www/cgi-bin/UT_only/ML && rm -rf * && git fetch origin master && git checkout origin/master web/cgi-bin && mv web/cgi-bin/* . && rm -r web/"
