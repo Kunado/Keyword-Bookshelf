@@ -27,4 +27,4 @@ deploy:
     - script:
         name: deploy static files
         code: |
-          ssh -i $PRIVATE_KEY_PATH -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USER_NAME@$SERVER_NAME "cd ~/www/UT_only/ML && rm -rf * && git fetch origin master && git checkout origin/master web/html && shopt -s dotglob && mv web/html/* . && rm -r web/"
+          ssh -i $PRIVATE_KEY_PATH -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USER_NAME@$SERVER_NAME "cd ~/www/UT_only/ML && rm -rf * && git fetch origin master && git checkout origin/master web/static && shopt -s dotglob && mv web/static/* . && rm -r web/"
