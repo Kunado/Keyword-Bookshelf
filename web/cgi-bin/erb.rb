@@ -2,5 +2,6 @@
 # encoding: utf-8
 require 'erb'
 require 'cgi'
-print "Content-Type: text/html; charset=utf-8\n\n"
-print "fuga"
+puts 'Content-Type: text/html; charset=utf-8'
+puts
+ERB.new(IO.read(CGI.new.path_translated)).run
