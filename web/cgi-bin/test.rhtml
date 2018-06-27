@@ -1,4 +1,8 @@
 <% 
    require_relative 'env'
+   require 'open-uri'
+   require 'xml/xslt'
 %>
-<a href="http://<%= $STATIC_FILES %>/booklist_decoded.xml">booklist</a>
+<a href="<%= $BOOK_LIST %>">booklist</a>
+<a href="<%= $KEYWORDS %>">keywords</a>
+<a href="<%= $RELATIONS %>">relations</a>
