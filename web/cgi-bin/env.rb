@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
+require 'open-uri'
+require 'xml/xslt'
+
 if ENV['SERVER_NAME'] == 'cgi.u.tsukuba.ac.jp'
 	$CGI_SCRIPTS = 'http://' + ENV['SERVER_NAME'] + '/~s1611442/UT_only/ML'
 	$STATIC_FILES = 'http://www.u.tsukuba.ac.jp' + '/~s1611442/UT_only/ML'

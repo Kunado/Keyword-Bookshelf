@@ -1,8 +1,17 @@
 <% 
    require_relative 'env'
-   require 'open-uri'
-   require 'xml/xslt'
+   require_relative 'partial/head'
+   require_relative 'partial/header'
+   require_relative 'partial/footer'
+%>
+<!DOCTYPE html>
+<%= $head
+%>
+<%= $header
 %>
 <a href="<%= $BOOK_LIST %>">booklist</a>
 <a href="<%= $KEYWORDS %>">keywords</a>
 <a href="<%= $RELATIONS %>">relations</a>
+<%= $footer
+%>
+</html>
