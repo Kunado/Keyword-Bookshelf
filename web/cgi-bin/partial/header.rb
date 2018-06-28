@@ -1,2 +1,6 @@
 require_relative '../env'
-$header = '<header>this is a header.</header>'
+$header = <<-"EOS"
+<header>
+   <a href="#{$CGI_SCRIPTS}/index.rhtml">bookshelf</a>
+</header>
+EOS

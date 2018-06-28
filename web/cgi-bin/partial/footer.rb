@@ -1,2 +1,5 @@
-require_relative '../env'
-$footer = '<footer>this is a footer.</footer>'
+$footer = <<-"EOS"
+<footer>
+   this is a footer.
+</footer>
+EOS

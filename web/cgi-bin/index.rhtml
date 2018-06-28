@@ -1,0 +1,17 @@
+<% 
+   require_relative 'env'
+   require_relative 'partial/head'
+   require_relative 'partial/header'
+   require_relative 'partial/footer'
+%>
+<!DOCTYPE html>
+<html lang="ja">
+<%= $head %>
+<body>
+	<%= $header %>
+	<a href="<%= $BOOK_LIST %>">booklist</a>
+	<a href="<%= $KEYWORDS %>">keywords</a>
+	<a href="<%= $RELATIONS %>">relations</a>
+	<%= $footer %>
+</body>
+</html>

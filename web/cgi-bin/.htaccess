@@ -1,6 +1,6 @@
 AddHandler application/x-httpd-eruby .rhtml
 
-<If "%{HTTP_HOST} == 'localhost\:8080'">
+<If "%{HTTP_HOST} == 'localhost'">
   Action application/x-httpd-eruby /cgi-bin/erb.rb
 </If>
 

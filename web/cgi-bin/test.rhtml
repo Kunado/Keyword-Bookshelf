@@ -5,13 +5,22 @@
    require_relative 'partial/footer'
 %>
 <!DOCTYPE html>
-<%= $head
-%>
-<%= $header
-%>
-<a href="<%= $BOOK_LIST %>">booklist</a>
-<a href="<%= $KEYWORDS %>">keywords</a>
-<a href="<%= $RELATIONS %>">relations</a>
-<%= $footer
-%>
+<html lang="ja">
+<%= $head %>
+<body>
+	<%= $header %>
+	<ol>
+		<%
+		xml = open("#{$STATIC_FILES}/data/keywords.xml")
+		xslt = XML::XSLT.new()
+		xslt.xml = xml.read
+		xsl = open("#{$STATIC_FILES}/data/paginate_keywords.xsl")
+		xslt.xsl = xsl.read
+		xslt.parameters = { "page" => "2"}
+		out = xslt.serve()
+		%>
+		<%= out %>
+	</ol>
+	<%= $footer %>
+</body>
 </html>

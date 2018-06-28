@@ -5,6 +5,7 @@ require 'xml/xslt'
 
 if ENV['SERVER_NAME'] == 'cgi.u.tsukuba.ac.jp'
 	$CGI_SCRIPTS = 'http://' + ENV['SERVER_NAME'] + '/~s1611442/UT_only/ML'
+	# $CGI_SCRIPTS = "http://#{ENV['SERVER_NAME']/~s1611442/UT_only/ML}"
 	$STATIC_FILES = 'http://www.u.tsukuba.ac.jp' + '/~s1611442/UT_only/ML'
 elsif ENV['SERVER_NAME'] == 'localhost'
 	$CGI_SCRIPTS = 'http://' + ENV['SERVER_NAME'] + ':' + ENV['SERVER_PORT'] + '/cgi-bin'
