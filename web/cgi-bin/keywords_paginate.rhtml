@@ -11,13 +11,13 @@
 	<%= $header %>
 	<ol>
 		<%
-		xml = open("#{$STATIC_FILES}/data/keywords.xml")
-		xslt = XML::XSLT.new()
-		xslt.xml = xml.read
-		xsl = open("#{$STATIC_FILES}/data/paginate_keywords.xsl")
-		xslt.xsl = xsl.read
-		xslt.parameters = { "page" => "2"}
-		out = xslt.serve()
+		   xml = open("#{$STATIC_FILES}/data/keywords.xml")
+		   xslt = XML::XSLT.new()
+		   xslt.xml = xml.read
+		   xsl = open("#{$STATIC_FILES}/xslt/paginate_keywords.xsl")
+		   xslt.xsl = xsl.read
+		   xslt.parameters = { "page" => "2"}
+		   out = xslt.serve()
 		%>
 		<%= out %>
 	</ol>
