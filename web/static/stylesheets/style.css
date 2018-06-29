@@ -1,0 +1,70 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: lightgray;
+}
+
+a {
+	text-decoration: none;
+}
+
+header {
+	background-color: gray;
+	padding: 10px 0;
+}
+
+footer {
+	background-color: gray;
+	padding: 10px;
+}
+
+header a {
+	color: white;
+	font-weight: 900;
+	font-size: 25px;
+}
+
+footer a {
+	color: white;
+}
+
+article {
+	padding: 35px;
+	background-color: white;
+	min-height: 600px;
+}
+
+section {
+	padding: 0 15px;
+}
+
+h1 {
+	margin: 15px 0;
+	font-size: 32px;
+}
+
+h2 {
+	margin: 30px 0 15px 0;
+	font-size: 22px;
+}
+
+p {
+	margin: 5px 30px;
+}
+
+ul {
+	list-style: none;
+	margin: 0 30px;
+}
+
+ul li {
+	margin: 12px 0;
+}
+
+.container {
+	width: 1000px;
+	margin: 0 auto;
+}
