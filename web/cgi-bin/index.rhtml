@@ -9,9 +9,24 @@
 <%= $head %>
 <body>
 	<%= $header %>
-	<a href="<%= $BOOK_LIST %>">booklist</a>
-	<a href="<%= $KEYWORDS %>">keywords</a>
-	<a href="<%= $RELATIONS %>">relations</a>
+	<h1>Keyword Bookshelf</h1>
+	<p>Keyword Bookshelf provides the way to find books by a keyword. Click a keyword link below and you will find books that relate to the keyword.</p>
+	<h2>keywords books the most commonly have</h2>
+	<ul>
+		<%
+		   xml = open("#{$STATIC_FILES}/data/keywords.xml")
+		   xslt = XML::XSLT.new()
+		   xslt.xml = xml.read
+		   xsl = open("#{$STATIC_FILES}/xslt/paginate_keywords.xsl")
+		   xslt.xsl = xsl.read
+		   xslt.parameters = {
+		   	"page" => "1",
+		   	"cgi_scripts" => "#{$CGI_SCRIPTS}"
+		   }
+		   out = xslt.serve()
+		%>
+		<%= out %>
+	</ul>
 	<%= $footer %>
 </body>
 </html>
