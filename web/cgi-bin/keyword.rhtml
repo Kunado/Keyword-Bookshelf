@@ -1,49 +1,30 @@
 <% 
-   require 'cgi'
-   require_relative 'env'
-   require_relative 'partial/head'
-   require_relative 'partial/header'
-   require_relative 'partial/footer'
+require 'cgi'
+require_relative 'env'
+require_relative 'partial/head'
+require_relative 'partial/header'
+require_relative 'partial/footer'
 %>
 <%
-   cgi = CGI.new
-   keyword = cgi["keyword"]
-   page = 1
+cgi = CGI.new
+keyword = cgi["keyword"]
+page = 1
 %>
 <!DOCTYPE html>
 <html lang="ja">
 <%= $head %>
 <body>
 	<%= $header %>
-	<article>
-		<h1>keyword: <%= keyword %></h1>
-		<section>
-			<h2>books that relate to this keyword</h2>
-			<%
-			   xml = open("#{$STATIC_FILES}/data/booklist.xml")
-			   xslt = XML::XSLT.new()
-			   xslt.xml = xml.read
-			   xsl = open("#{$STATIC_FILES}/xslt/books_by_keyword.xsl")
-			   xslt.xsl = xsl.read
-			   xslt.parameters = {
-			   	"keyword" => "#{keyword}",
-			   	"page" => "1",
-			   	"cgi_scripts" => "#{$CGI_SCRIPTS}"
-			   }
-			   out = xslt.serve()
-			%>
-			<ul>
-				<%= out.force_encoding("UTF-8") %>
-			</ul>
-		</section>
-		<section>
-			<h2>other keywords books that relate to this keyword has</h2>
-			<ul>
+	<div class="container">
+		<article>
+			<h1>keyword: <%= keyword %></h1>
+			<section>
+				<h2>books that relate to this keyword</h2>
 				<%
-				xml = open("#{$STATIC_FILES}/data/relations.xml")
+				xml = open("#{$STATIC_FILES}/data/booklist.xml")
 				xslt = XML::XSLT.new()
 				xslt.xml = xml.read
-				xsl = open("#{$STATIC_FILES}/xslt/related_keywords.xsl")
+				xsl = open("#{$STATIC_FILES}/xslt/books_by_keyword.xsl")
 				xslt.xsl = xsl.read
 				xslt.parameters = {
 					"keyword" => "#{keyword}",
@@ -52,10 +33,31 @@
 				}
 				out = xslt.serve()
 				%>
-				<%= out.force_encoding("UTF-8") %>
-			</ul>
-		</section>
-	</article>
+				<ul>
+					<%= out.force_encoding("UTF-8") %>
+				</ul>
+			</section>
+			<section>
+				<h2>other keywords books that relate to this keyword has</h2>
+				<ul>
+					<%
+					xml = open("#{$STATIC_FILES}/data/relations.xml")
+					xslt = XML::XSLT.new()
+					xslt.xml = xml.read
+					xsl = open("#{$STATIC_FILES}/xslt/related_keywords.xsl")
+					xslt.xsl = xsl.read
+					xslt.parameters = {
+						"keyword" => "#{keyword}",
+						"page" => "1",
+						"cgi_scripts" => "#{$CGI_SCRIPTS}"
+					}
+					out = xslt.serve()
+					%>
+					<%= out.force_encoding("UTF-8") %>
+				</ul>
+			</section>
+		</article>
+	</div>
 	<%= $footer %>
 </body>
 </html>
