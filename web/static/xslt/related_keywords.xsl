@@ -19,10 +19,12 @@
 				<xsl:attribute name="href">
 					<xsl:value-of select="concat($cgi_scripts, '/keyword.rhtml?keyword=', $keyword_related)"/>
 				</xsl:attribute>
-				<h3>
-					<xsl:value-of select="$keyword_related"/>
-				</h3>
-				<xsl:value-of select="count"/>
+				<xsl:value-of select="$keyword_related"/>
+				<span>
+					<xsl:text>(</xsl:text>
+					<xsl:value-of select="count"/>
+					<xsl:text>book(s) also relate to this keyword)</xsl:text>
+				</span>
 			</a>
 		</li>
 	</xsl:if>

@@ -5,7 +5,7 @@
 
 ```
 docker build -t alpine:apache .
-docker run -p 8080:80 -v $(pwd)/web:/web --name alpine_webserver alpine:apache
+docker run -p 80:80 -v $(pwd)/web:/web --name alpine_webserver alpine:apache
 ```
 
 ### restart the container
